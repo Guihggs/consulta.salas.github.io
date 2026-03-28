@@ -179,6 +179,7 @@ body, html {
       <div class="res-name" id="nomeVal">--</div>
       <span class="res-label">Sua sala é</span>
       <div class="res-val" id="salaVal">--</div>
+      <div class="res-pill">Local: <strong id="predioVal">--</strong></div>
       <div class="res-pill">Código: <strong id="turmaCodVal">--</strong></div>
       <div class="res-pill">Dia/Turno: <strong id="diaSemanaVal">--</strong></div>
       <button class="btn-back" onclick="resetSearch()">← Nova consulta</button>
@@ -293,8 +294,11 @@ function doSearch() {
  
   if (f) {
     const codTurma = f.CODTURMA || "Não consta";
+    const nomePredio = f["NOME PREDIO"] || f.NOME_PREDIO || "Não informado";
+    
     document.getElementById('salaVal').innerText = f.NOME_SALA || "S/N";
     document.getElementById('nomeVal').innerText = f.NOME;
+    document.getElementById('predioVal').innerText = nomePredio;
     document.getElementById('turmaCodVal').innerText = codTurma;
     document.getElementById('diaSemanaVal').innerText = interpretarCodTurma(codTurma);
     document.getElementById('screenInput').style.display = 'none';
